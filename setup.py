@@ -1,3 +1,8 @@
+"""
+Script to automate installing the necessary dependencies and downloading the dataset.
+Automatically run at the beggining of the main notebook.
+"""
+
 import os
 import shutil
 

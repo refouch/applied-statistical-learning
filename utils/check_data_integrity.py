@@ -1,18 +1,22 @@
 import os 
 import hashlib
 
+# ==== Defining paths ====
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 checksum_path = os.path.join(ROOT_DIR, "data/fma_metadata/checksums")
 data_path = os.path.join(ROOT_DIR,"data/fma_metadata")
 
-def sha1sum(filepath):
+def sha1sum(filepath) -> str:
+    """Function to calculate the sha1 hash of a given file"""
     h = hashlib.sha1()
     with open(filepath, "rb") as f:
         for chunk in iter(lambda: f.read(8192), b""):
             h.update(chunk)
     return h.hexdigest()
 
-def retrieve_checksums():
+
+def retrieve_checksums() -> dict:
+    """Function storing every checksum from the dataset integrity file in a dictionnary"""
     checksums = {}
     with open(checksum_path, "r") as f:
         for line in f:
@@ -23,7 +27,12 @@ def retrieve_checksums():
             checksums[filename] = sha1
     return checksums
 
-def check_integrity():
+
+def check_integrity() -> bool:
+    """Function to check the dataset integrity.
+        Returns:
+            - True if all file's hash corresponds to the given checksums
+            - False is at least one file is corrupted or missing"""
 
     print("Checking the dataset integrity...")
 
