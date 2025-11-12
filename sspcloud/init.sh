@@ -1,36 +1,25 @@
 #!/bin/bash
-# ===========================================
-# Script d'initialisation SSP Cloud
-# Projet : applied-statistical-learning
-# Auteur : Rémi Fouchérand
-# ===========================================
+set -e  # stoppe le script si une commande échoue
 
-# --- 1. Préparation de l'environnement de travail ---
-echo "=== Initialisation de l'environnement SSP Cloud ==="
+# ===== Variables =====
+WORK_DIR="/home/onyxia/work"
+REPO_URL="https://github.com/refouch/applied-statistical-learning.git"
+REPO_NAME="applied-statistical-learning"
+CLONE_DIR="${WORK_DIR}/${REPO_NAME}"
 
-# Aller dans le répertoire de travail (habituel sur SSP Cloud)
-cd "${HOME}" || exit
+echo "🚀 Initialisation de l'environnement SSP Cloud..."
+echo "📂 Dossier de travail : ${WORK_DIR}"
 
-# --- 2. Cloner ton dépôt GitHub ---
-echo "=== Clonage du dépôt GitHub ==="
-if [ ! -d "applied-statistical-learning" ]; then
-    git clone https://github.com/refouch/applied-statistical-learning.git
-else
-    echo "Le dépôt existe déjà, mise à jour..."
-    cd applied-statistical-learning || exit
-    git pull
-    cd ..
-fi
+# ===== Clonage du dépôt =====
+echo "📦 Clonage du dépôt GitHub..."
+git clone "${REPO_URL}" "${CLONE_DIR}"
 
-cd applied-statistical-learning || exit
+# ===== Installation éventuelle d’extensions utiles =====
+code-server --install-extension ms-python.python
+code-server --install-extension quarto.quarto
 
-MAIN_NOTEBOOK="main.ipynb"
+# ===== Ouverture du dossier dans VS Code =====
+echo "🧭 Ouverture du projet dans VS Code..."
+code-server --reuse-window "${CLONE_DIR}"
 
-if [ -f "$MAIN_NOTEBOOK" ]; then
-    echo "=== Ouverture du notebook principal : $MAIN_NOTEBOOK ==="
-    code "$MAIN_NOTEBOOK"
-else
-    echo "Notebook principal introuvable. Ouvre le manuellement depuis VS Code."
-fi
-
-echo "=== Initialisation terminée ==="
+echo "✅ Environnement prêt. Bon travail !"
