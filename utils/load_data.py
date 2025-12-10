@@ -1,5 +1,6 @@
 """
-Function to load the data borrowed from the author's github repo
+Function to load the data borrowed from the author's github repo:
+https://github.com/mdeff/fma/blob/master/utils.py
 """
 
 import pandas as pd
@@ -27,7 +28,7 @@ def fma_load(filepath):
             tracks[column] = tracks[column].map(ast.literal_eval)
 
         COLUMNS = [('track', 'date_created'), ('track', 'date_recorded'),
-                   ('album', 'date_created'), ('album', 'date_released'),
+                   ('album', 'date_created'), ('agtlbum', 'date_released'),
                    ('artist', 'date_created'), ('artist', 'active_year_begin'),
                    ('artist', 'active_year_end')]
         for column in COLUMNS:
