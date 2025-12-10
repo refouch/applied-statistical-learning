@@ -5,6 +5,7 @@ https://github.com/mdeff/fma/blob/master/utils.py
 
 import pandas as pd
 import os
+import ast
 
 def fma_load(filepath):
 
