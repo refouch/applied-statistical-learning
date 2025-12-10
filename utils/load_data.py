@@ -29,7 +29,7 @@ def fma_load(filepath):
             tracks[column] = tracks[column].map(ast.literal_eval)
 
         COLUMNS = [('track', 'date_created'), ('track', 'date_recorded'),
-                   ('album', 'date_created'), ('agtlbum', 'date_released'),
+                   ('album', 'date_created'), ('album', 'date_released'),
                    ('artist', 'date_created'), ('artist', 'active_year_begin'),
                    ('artist', 'active_year_end')]
         for column in COLUMNS:
