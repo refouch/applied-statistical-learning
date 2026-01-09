@@ -4,10 +4,11 @@ Projet de classification de titres musicaux selon leur genre réalisé par Lucas
 
 Pour reproduire nos résultats et comprendre notre démarche, il convient d'exécuter les fichiers dans l'ordre suivant : 
 
-- main.ipynb (pour récupérer les données)
-- logreg.ipynb
-- neural_net.ipynb
-- rf.ipynb
-- XGboost.ipynb
+- main.ipynb (**nécessaire pour récupérer les données**)
+- logreg.ipynb (régression logistique)
+- neural_net.ipynb (réseau de neurones)
+- convnet.ipynb (réseau de neurones convolutionnel)
+- rf.ipynb (forêt aléatoire)
+- XGboost.ipynb (algorithme XGBoost)
 
-Chaque notebook Jupyter correspond à un modèle différent appliqué au même jeu de données contenant des *features* Librosa agrégées des titres du Free Music Archives (FMA).
+Chaque notebook Jupyter hormis main.ipynb correspond à un modèle différent appliqué au même jeu de données contenant des *features* Librosa agrégées des titres du Free Music Archives (FMA).
